@@ -13,9 +13,11 @@ function instantDomManipulation (monsterName, imgURL, bounty) {
     cardImage.src = imgURL
     cardImage.classList.add("monster-image")
     cardReward.innerHTML = bounty
+    cardButton.innerText = "Embark!"
     cardWrapper.appendChild(cardTitle)
     cardWrapper.appendChild(cardImage)
     cardWrapper.appendChild(cardReward)
+    cardWrapper.appendChild(cardButton)
 
     qstBoard.appendChild(cardWrapper)
 }
@@ -25,7 +27,7 @@ const getNewQuests = () => {
     axios.get("http://localhost:4060/quest/")
             .then(res => {
                 console.log(res.data);
-                instantDomManipulation(res.data.monster, "https://static01.nyt.com/images/2022/12/20/science/16tb-cinnamon-bear/16tb-cinnamon-bear-mediumSquareAt3X.jpg", res.data.reward)
+                instantDomManipulation(res.data.monster, res.data.image, res.data.reward)
             })
 }   
 

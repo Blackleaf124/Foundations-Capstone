@@ -1,24 +1,28 @@
 const monsters = [
     {
         "name": "Beak Face",
+        "image": "/monsterImages/beakBoy.jpg",
         "weaknesses": ["burning", "stun"],
         "family": "carnal",
         "build": "light"
     },
     {
         "name": "Hammer-head",
+        "image": "/monsterImages/hammerHead.jpg",
         "weaknesses": ["concussion", "holy"],
         "family": "eldritch",
         "build": "heavy"
     },
     {
         "name": "Book-head Face Hider",
+        "image": "/monsterImages/bookHead.jpg",
         "weaknesses": ["mental", "poison"],
         "family": "abyssal",
         "build": "normal"
     },
     {
         "name": "Snake Zerg",
+        "image": "/monsterImages/snakeBoy.jpg",
         "weaknesses": ["burning", "stun"],
         "family": "carnal",
         "build": "heavy"
@@ -65,10 +69,12 @@ module.exports = {
 
         let newQuest = {
             "monster": "",
+            "image": "",
             "reward": 0  
         }
 
         newQuest.monster = randomMonster.name
+        newQuest.image = randomMonster.image
         newQuest.reward = Math.floor(Math.random() * (800 - 500)) + 500
 
         console.log(newQuest);
