@@ -8,11 +8,24 @@
     <title>Quest Board</title>
     </head>
     <body>
-        <h1>Quest Board</h1>
+        <h1>Hunting Guild</h1>
         <p>Give your hunter equipment and select a monster for him to hunt!</p>
-        <button id="newQstBtn" >New Quest</button>
+        <button id="newQstBtn" >New Quests</button>
         <section id="questBoard">
+            <h3>Quest Board</h3>
         </section>
+        <section id="chosenQuest">
+            <h3>Selected Quest</h3>
+        </section>
+        <form action="">
+            <h3>Hunter Gear</h3>
+            <select name="hunterGear" id="gear">
+                <option value="">Poison</option>
+                <option value="">Burning</option>
+                <option value="">Holy</option>
+            </select>
+            <input type="submit">
+        </form>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="main.js"></script>
 </body>

@@ -61,24 +61,39 @@ const items = [
     },
 ]
 
+let selectedQuest = {}
+
 module.exports = {
     
     getQuest: (req, res) => {
-        let randomIndex = Math.floor(Math.random() * monsters.length)
-        let randomMonster = monsters[randomIndex]
+        let newQuests = []
+        
+        for(i=0; i<3; i++){
+            let randomIndex = Math.floor(Math.random() * monsters.length)
+            let randomMonster = monsters[randomIndex]
 
-        let newQuest = {
-            "monster": "",
-            "image": "",
-            "reward": 0  
+            let newQuest = {
+             "monster": "",
+             "image": "",
+             "reward": 0  
+            }
+            newQuest.monster = randomMonster.name
+            newQuest.image = randomMonster.image
+            newQuest.reward = Math.floor(Math.random() * (800 - 500)) + 500
+            
+            newQuests.push(newQuest)
         }
+        console.log(newQuests);
 
-        newQuest.monster = randomMonster.name
-        newQuest.image = randomMonster.image
-        newQuest.reward = Math.floor(Math.random() * (800 - 500)) + 500
-
-        console.log(newQuest);
-
-        res.status(200).send(newQuest)
+        res.status(200).send(newQuests)
+    },
+    postSelected: (req, res) => {
+        console.log(req.body);
+        selectedQuest = req.body
+        res.status(200).send(selectedQuest)
+    },
+    deleteSelected: (req, res) => {
+        selectedQuest = {}
+        res.status(200).send("Selected Quest Cleared!")
     }
 }
