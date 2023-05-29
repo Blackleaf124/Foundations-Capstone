@@ -26,6 +26,20 @@ const monsters = [
         "weaknesses": ["burning", "stun"],
         "family": "carnal",
         "build": "heavy"
+    },
+    {
+        "name": "Bug Demon",
+        "image": "/monsterImages/shyishBug.jpg",
+        "weaknesses": ["holy", "concussion"],
+        "family": "eldritch",
+        "build": "heavy"
+    },
+    {
+        "name": "Cosmic Monk",
+        "image": "/monsterImages/krissKrossKillYourFamily.jpg",
+        "weaknesses": ["poison", "mental"],
+        "family": "abyssal",
+        "build": "light"
     }
 ]
 const items = [

@@ -135,6 +135,14 @@ const beginHunt = (event) => {
     
     axios.post("http://localhost:4060/huntResults/", huntParams)
         .then(res => {
+            document.querySelector("#resultP")?.remove()
+            selectedQuestDiv.remove()
+            deleteSelectedQuest()
+            getNewQuests()
+            let result = document.createElement("p")
+            result.innerHTML = res.data
+            result.id = "resultP"
+            resultSection.appendChild(result)
             console.log(res.data)
         })
 }
