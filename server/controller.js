@@ -31,33 +31,27 @@ const monsters = [
 const items = [
     {
         "name": "Mental Resolve Serum",
-        "attributes": "mental",
-        "cost": 100
+        "attributes": "mental"
     },
     {
         "name": "Poison Gas Grenades",
-        "attributes": "poison",
-        "cost": 50
+        "attributes": "poison"
     },
     {
         "name": "Flash Bombs",
-        "attributes": "stun",
-        "cost": 25
+        "attributes": "stun"
     },
     {
         "name": "Bola",
-        "attributes": "stun",
-        "cost": 40
+        "attributes": "stun"
     },
     {
         "name": "Golden Crucifix",
-        "attributes": "holy",
-        "cost": 90
+        "attributes": "holy"
     },
     {
         "name": "Sound Bomb",
-        "attributes": "concussion",
-        "cost": 30
+        "attributes": "concussion"
     },
 ]
 
@@ -65,6 +59,10 @@ let selectedQuest = {}
 
 module.exports = {
     
+    getItems: (req, res) => {
+        let itemsList = items
+        res.status(200).send(itemsList)
+    },
     getQuest: (req, res) => {
         let newQuests = []
         
@@ -74,17 +72,17 @@ module.exports = {
 
             let newQuest = {
              "monster": "",
+             "weak": [],
              "image": "",
              "reward": 0  
             }
             newQuest.monster = randomMonster.name
+            newQuest.weak = randomMonster.weaknesses
             newQuest.image = randomMonster.image
             newQuest.reward = Math.floor(Math.random() * (800 - 500)) + 500
             
             newQuests.push(newQuest)
         }
-        console.log(newQuests);
-
         res.status(200).send(newQuests)
     },
     postSelected: (req, res) => {
@@ -95,5 +93,24 @@ module.exports = {
     deleteSelected: (req, res) => {
         selectedQuest = {}
         res.status(200).send("Selected Quest Cleared!")
+    },
+    calculateHunt: (req, res) => {
+        let weak = req.body.monsterWeak
+        let attribute = req.body.gearAttribute
+        // console.log(type)
+        // console.log(attribute)
+        let bonus = 0
+        for(i=0; i<weak.length; i++){
+            if(weak[i] === attribute){
+                bonus + 0.2
+            }
+        }
+        let num = Math.random() + bonus
+        if(num < .4){
+            res.status(200).send("Quest failed...")
+        }else{
+            res.status(200).send("Quest successful!")
+        }
+        
     }
 }

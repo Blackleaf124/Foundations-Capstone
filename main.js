@@ -4,6 +4,7 @@ const chsnQuest = document.getElementById("chosenQuest")
 const newQuestsBtn = document.getElementById("newQstBtn")
 let currentQuests = []
 let selectedQuest = {}
+let itemsList = []
 
 function createNewQuestCard (monsterName, imgURL, bounty, id) {
     
@@ -65,6 +66,20 @@ function selectQuestCard (monsterName, imgURL, bounty) {
     chsnQuest.appendChild(cardWrapperSel)
 }
 
+const getItemsArray = () => {
+    console.log("Get items")
+
+    axios.get("http://localhost:4060/items/")
+        .then(res => {
+            itemsList = res.data
+            let optionList = document.getElementById("gear").options
+            let options = itemsList
+
+            options.forEach(option => optionList.add(
+                new Option(option.name, option.attributes)
+            ))
+        })
+}
 
 const getNewQuests = () => {
     console.log("Get new quests")
@@ -94,6 +109,7 @@ const postSelectedQuest = () => {
     axios.post("http://localhost:4060/selected/", myBody)
         .then(res => {
             selectQuestCard(res.data.monster, res.data.image, res.data.reward)
+            // console.log(selectedQuest.weak);
         })
         .catch()
 }
@@ -105,8 +121,30 @@ const deleteSelectedQuest =() => {
         .catch()
 }
 
+const beginHunt = (event) => {
+    event.preventDefault()
+    let selectedOption = document.getElementById("gear")
+    let gearAttribute = selectedOption.options[selectedOption.selectedIndex].value
+    let monsterWeaknesses = selectedQuest.weak
+    
+
+    huntParams = {
+        "monsterWeak": monsterWeaknesses,
+        "gearAttribute": gearAttribute
+    }
+    
+    axios.post("http://localhost:4060/huntResults/", huntParams)
+        .then(res => {
+            console.log(res.data)
+        })
+}
+
+
+
+getItemsArray()
 
 newQuestsBtn.addEventListener("click", getNewQuests)
+hunterGearForm.addEventListener("submit", beginHunt)
 
 
 
