@@ -6,10 +6,69 @@ body{
     background-size: cover;
 }
 
+#questBoard{
+    height: 480px;
+}
+
 #stamp{
     position: absolute;
     width: 150px;
     rotate: 10deg;
+}
+
+.button{
+    border: none;
+    background-color: #733;
+    color: rgb(228, 222, 188);
+    padding: 6px 10px;
+    width: 70px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;  
+}
+
+#hunterGearForm{
+    height: 70px;
+}
+
+#resultP{
+    background: #d9dad8;
+    border-radius: 5px;
+    padding: 2px 8px;
+}
+
+.cardButton{
+    border: none;
+    background-color: #733;
+    color: rgb(228, 222, 188);
+    padding: 6px 10px;
+    width: 70px;
+    margin-top: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.cardButton:active{
+    background-color: #955;
+}
+
+.rmvButton{
+    border: none;
+    background-color: #435;
+    color: rgb(228, 222, 188);
+    padding: 6px 10px;
+    width: 70px;
+    margin-top: 5px;
+    margin-right: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.rmvButton:active{
+    background-color: #657;
 }
 
 #main{
@@ -24,13 +83,14 @@ body{
     text-align: center;
     font-family: gabriola;
     font-size: large;
+    min-height: 100vh;
 }
 
 #boardHeader{
     background-image: url("monsterImages/tatteredCardHorizontal.png");
-    background-position: right 40% bottom 65%;
+    background-position: right 35% bottom 60%;
     background-repeat: no-repeat;
-    background-size: 600px 225px;
+    background-size: 650px 225px;
     width: 50%;
     /* border: 2mm solid #ada893;
     border-radius: 5px; */
@@ -40,12 +100,14 @@ body{
     padding: 0px;
     padding-top: 20px;
     margin: 0px;
+    height: 40px;
 }
 
 #guildP{
     padding: 0px;
     padding-bottom: 10px;
     margin: 0px;
+    font-size: larger;
 }
 
 #questBoard{
@@ -69,19 +131,24 @@ body{
     background-position: right 44% bottom 75%;
     background-repeat: no-repeat;
     background-size: 230%;
-    background-size: 600px 626px;
+    background-size: 600px 628px;
     gap: 0px;
+}
+
+.cardTitle{
+    margin: 10px;
 }
 
 .cardReward{
     padding: 0px;
     margin: 0px;
+    font-size: larger;
 }
 
 .monster-image{
     width: 200px;
     height: 300px;
-    border: thick double #533;
+    border: thick double #733;
 }
 
 .info-panel{
@@ -93,3 +160,25 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+#hunterGear{
+    margin: 0px auto;
+    margin-bottom: 10px;
+    background-color: #422;
+    color: rgb(228, 222, 188);
+    text-align: center;
+    width: 50%;
+    height: 32px;
+    border-radius: 5px;
+}
+
+#results{
+    margin: 0px auto;
+    margin-bottom: 10px;
+    background-color: #422;
+    color: rgb(228, 222, 188);
+    text-align: center;
+    height: 30px;
+    border-radius: 5px;
+}
+
