@@ -100,8 +100,9 @@ module.exports = {
         res.status(200).send(newQuests)
     },
     postSelected: (req, res) => {
-        console.log(req.body);
+        // console.log(req.body);
         selectedQuest = req.body
+        console.log(selectedQuest);
         res.status(200).send(selectedQuest)
     },
     deleteSelected: (req, res) => {

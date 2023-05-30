@@ -1,3 +1,95 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    background-image: url("monsterImages/tavern2Blur.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#stamp{
+    position: absolute;
+    width: 150px;
+    rotate: 10deg;
+}
+
+#main{
+    background-image: url("monsterImages/woodBoards.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    font-family: gabriola;
+    font-size: large;
+}
+
+#boardHeader{
+    background-image: url("monsterImages/tatteredCardHorizontal.png");
+    background-position: right 40% bottom 65%;
+    background-repeat: no-repeat;
+    background-size: 600px 225px;
+    width: 50%;
+    /* border: 2mm solid #ada893;
+    border-radius: 5px; */
+}
+
+#guildHeader{
+    padding: 0px;
+    padding-top: 20px;
+    margin: 0px;
+}
+
+#guildP{
+    padding: 0px;
+    padding-bottom: 10px;
+    margin: 0px;
+}
+
+#questBoard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+#chosenQuest{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+
+.questCard{
+    width: 270px;
+    height: 480px;
+    background-image: url("monsterImages/tatteredCard.png");
+    background-position: right 44% bottom 75%;
+    background-repeat: no-repeat;
+    background-size: 230%;
+    background-size: 600px 626px;
+    gap: 0px;
+}
+
+.cardReward{
+    padding: 0px;
+    margin: 0px;
+}
+
 .monster-image{
-    max-width: 200px;
+    width: 200px;
+    height: 300px;
+    border: thick double #533;
+}
+
+.info-panel{
+    width: 600px;
+    background: #d9dad8;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

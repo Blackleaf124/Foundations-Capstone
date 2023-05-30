@@ -1,5 +1,6 @@
 
 const qstBoard = document.getElementById("questBoard")
+const infoBoard = document.getElementById("info")
 const chsnQuest = document.getElementById("chosenQuest")
 const newQuestsBtn = document.getElementById("newQstBtn")
 let currentQuests = []
@@ -13,14 +14,46 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
     const cardImage = document.createElement("img")
     const cardReward = document.createElement("p")
     const cardButton = document.createElement("button")
+    const infoButton = document.createElement("button")
 
     cardWrapper.id = id
+    cardWrapper.classList.add("questCard")
     cardTitle.innerHTML = monsterName
     cardImage.src = imgURL
     cardImage.classList.add("monster-image")
     cardReward.innerHTML = bounty
+    cardReward.classList.add("cardReward")
+    infoButton.innerText = "Info"
+    infoButton.id = ("monsterInfoButton")
+    infoButton.addEventListener("click", () => {
+        const infoDiv = document.createElement("div")
+        const infoImg = document.createElement("img")
+        const infoTitle = document.createElement("h2")
+        const infoP = document.createElement("p")
+        const closeBtn = document.createElement("button")
+
+        infoDiv.id = "infoPanel"
+        infoDiv.classList.add("info-panel")
+        infoTitle.innerHTML = monsterName
+        infoP.innerHTML = "Placeholder text"
+        infoImg.src = imgURL
+        infoImg.classList.add("monster-image")
+        closeBtn.innerText = "Close"
+        closeBtn.id = "closeButton"
+        closeBtn.addEventListener("click", () => {
+            infoDiv.remove()
+        })
+
+        infoDiv.appendChild(infoTitle)
+        infoDiv.appendChild(infoImg)
+        infoDiv.appendChild(closeBtn)
+        infoDiv.appendChild(infoP)
+
+        infoBoard.appendChild(infoDiv)
+    })
     cardButton.innerText = "Select"
-    cardButton.id = ("selectQuestButton")
+    cardButton.id = (id + "selectBtn")
+    currentBtnId = cardButton.id
     cardButton.addEventListener("click", () => {
         if(id === "firstQuest"){
             selectedQuest = currentQuests[0]
@@ -29,42 +62,54 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
         }else if(id === "thirdQuest"){
             selectedQuest = currentQuests[2]
         }
+        const selectBtn = document.getElementById(cardButton.id)
+        const removeBtn = document.createElement("button")
+        removeBtn.innerText = "Remove"
+        removeBtn.addEventListener("click", () => {
+            removeBtn.parentNode.replaceChild(selectBtn, removeBtn)
+            deleteSelectedQuest()
+        })
+        selectBtn.parentNode.replaceChild(removeBtn, selectBtn)
+        console.log(selectedQuest);
         postSelectedQuest()
     })
     cardWrapper.appendChild(cardTitle)
     cardWrapper.appendChild(cardImage)
     cardWrapper.appendChild(cardReward)
     cardWrapper.appendChild(cardButton)
+    cardWrapper.appendChild(infoButton)
 
     qstBoard.appendChild(cardWrapper)
 }
 
-function selectQuestCard (monsterName, imgURL, bounty) {
+// function selectQuestCard (monsterName, imgURL, bounty) {
     
-    const cardWrapperSel = document.createElement("div")
-    const cardTitleSel = document.createElement("h3")
-    const cardImageSel = document.createElement("img")
-    const cardRewardSel = document.createElement("p")
-    const cardButtonSel = document.createElement("button")
+//     const cardWrapperSel = document.createElement("div")
+//     const cardTitleSel = document.createElement("h3")
+//     const cardImageSel = document.createElement("img")
+//     const cardRewardSel = document.createElement("p")
+//     const cardButtonSel = document.createElement("button")
 
-    cardWrapperSel.id = "selectedQuestDiv"
-    cardTitleSel.innerHTML = monsterName
-    cardImageSel.src = imgURL
-    cardImageSel.classList.add("monster-image")
-    cardRewardSel.innerHTML = bounty
-    cardButtonSel.innerText = "Remove"
-    cardButtonSel.id = ("removeQuestButton")
-    cardButtonSel.addEventListener("click", () => {
-        cardWrapperSel.remove()
-        deleteSelectedQuest()
-    })
-    cardWrapperSel.appendChild(cardTitleSel)
-    cardWrapperSel.appendChild(cardImageSel)
-    cardWrapperSel.appendChild(cardRewardSel)
-    cardWrapperSel.appendChild(cardButtonSel)
+//     cardWrapperSel.id = "selectedQuestDiv"
+//     cardWrapperSel.classList.add("questCard")
+//     cardTitleSel.innerHTML = monsterName
+//     cardImageSel.src = imgURL
+//     cardImageSel.classList.add("monster-image")
+//     cardRewardSel.innerHTML = bounty
+//     cardRewardSel.classList.add("cardReward")
+//     cardButtonSel.innerText = "Remove"
+//     cardButtonSel.id = ("removeQuestButton")
+//     cardButtonSel.addEventListener("click", () => {
+//         cardWrapperSel.remove()
+//         deleteSelectedQuest()
+//     })
+//     cardWrapperSel.appendChild(cardTitleSel)
+//     cardWrapperSel.appendChild(cardImageSel)
+//     cardWrapperSel.appendChild(cardRewardSel)
+//     cardWrapperSel.appendChild(cardButtonSel)
 
-    chsnQuest.appendChild(cardWrapperSel)
-}
+//     chsnQuest.appendChild(cardWrapperSel)
+// }
 
 const getItemsArray = () => {
     console.log("Get items")
@@ -108,13 +153,13 @@ const postSelectedQuest = () => {
 
     axios.post("http://localhost:4060/selected/", myBody)
         .then(res => {
-            selectQuestCard(res.data.monster, res.data.image, res.data.reward)
+            // selectQuestCard(res.data.monster, res.data.image, res.data.reward)
             // console.log(selectedQuest.weak);
         })
         .catch()
 }
 
-const deleteSelectedQuest =() => {
+const deleteSelectedQuest = () => {
     console.log("Delete selected quest");
     axios.delete("http://localhost:4060/clearSelected/")
         .then(console.log("Selected quest cleared"))
@@ -136,7 +181,7 @@ const beginHunt = (event) => {
     axios.post("http://localhost:4060/huntResults/", huntParams)
         .then(res => {
             document.querySelector("#resultP")?.remove()
-            selectedQuestDiv.remove()
+            // selectedQuestDiv.remove()
             deleteSelectedQuest()
             getNewQuests()
             let result = document.createElement("p")
@@ -148,7 +193,7 @@ const beginHunt = (event) => {
 }
 
 
-
+getNewQuests()
 getItemsArray()
 
 newQuestsBtn.addEventListener("click", getNewQuests)

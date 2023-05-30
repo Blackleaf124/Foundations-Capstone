@@ -8,25 +8,32 @@
     <title>Quest Board</title>
     </head>
     <body>
-        <h1>Hunting Guild</h1>
-        <p>Give your hunter equipment and select a monster for him to hunt!</p>
-        <button id="newQstBtn" >New Quests</button>
-        <section id="questBoard">
-            <h3>Quest Board</h3>
-        </section>
-        <section id="chosenQuest">
-            <h3>Selected Quest</h3>
-        </section>
-        <form id="hunterGearForm">
-            <h3>Hunter Gear</h3>
-            <select name="hunterGear" id="gear">
-                
-            </select>
-            <input type="submit">
-        </form>
-        <section id="resultSection">
-            <h3>Results</h3>
-        </section>
+        <div id="main">
+            <div id="boardHeader">
+                <h1 id="guildHeader">QUEST BOARD</h1>
+                <p id="guildP">Give your hunter equipment and select a monster for him to hunt!</p>
+            </div>
+            
+            <button id="newQstBtn" >New Quests</button>
+            <section id="info">
+    
+            </section>
+            <section id="questBoard">
+            </section>
+            <section id="chosenQuest">
+            </section>
+            <form id="hunterGearForm">
+                <h3>Hunter Gear</h3>
+                <select name="hunterGear" id="gear">
+                    
+                </select>
+                <input type="submit">
+            </form>
+            <section id="resultSection">
+                <h3>Results</h3>
+            </section>
+        </div>
+        
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="main.js"></script>
 </body>
