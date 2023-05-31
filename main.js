@@ -71,9 +71,19 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
         removeBtn.classList.add("rmvButton")
         removeBtn.addEventListener("click", () => {
             removeBtn.parentNode.replaceChild(selectBtn, removeBtn)
+            stamp.remove()
             deleteSelectedQuest()
         })
         selectBtn.parentNode.replaceChild(removeBtn, selectBtn)
+
+        const stamp = document.createElement("img")
+        stamp.src = "monsterImages/stampPic.png"
+        stamp.id = "stamp"
+        stamp.style.left = Math.floor(Math.random() * (120 - 5) + 5) + "px"
+        stamp.style.bottom = Math.floor(Math.random() * (300 - 80) + 80) + "px"
+        stamp.style.rotate = Math.floor(Math.random() * (30 + 30) - 30) + "deg"
+        cardWrapper.appendChild(stamp)
+
         console.log(selectedQuest);
         postSelectedQuest()
     })
