@@ -1,78 +1,17 @@
-const monsters = [
-    {
-        "name": "Beak Face",
-        "image": "/monsterImages/beakBoy.jpg",
-        "weaknesses": ["burning", "stun"],
-        "family": "carnal",
-        "build": "light"
-    },
-    {
-        "name": "Hammer-head",
-        "image": "/monsterImages/hammerHead.jpg",
-        "weaknesses": ["concussion", "holy"],
-        "family": "eldritch",
-        "build": "heavy"
-    },
-    {
-        "name": "Book-head Face Hider",
-        "image": "/monsterImages/bookHead.jpg",
-        "weaknesses": ["mental", "poison"],
-        "family": "abyssal",
-        "build": "normal"
-    },
-    {
-        "name": "Snake Zerg",
-        "image": "/monsterImages/snakeBoy.jpg",
-        "weaknesses": ["burning", "stun"],
-        "family": "carnal",
-        "build": "heavy"
-    },
-    {
-        "name": "Bug Demon",
-        "image": "/monsterImages/shyishBug.jpg",
-        "weaknesses": ["holy", "concussion"],
-        "family": "eldritch",
-        "build": "heavy"
-    },
-    {
-        "name": "Cosmic Monk",
-        "image": "/monsterImages/krissKrossKillYourFamily.jpg",
-        "weaknesses": ["poison", "mental"],
-        "family": "abyssal",
-        "build": "light"
-    }
-]
-const items = [
-    {
-        "name": "Mental Resolve Serum",
-        "attributes": "mental"
-    },
-    {
-        "name": "Poison Gas Grenades",
-        "attributes": "poison"
-    },
-    {
-        "name": "Flash Bombs",
-        "attributes": "stun"
-    },
-    {
-        "name": "Bola",
-        "attributes": "stun"
-    },
-    {
-        "name": "Golden Crucifix",
-        "attributes": "holy"
-    },
-    {
-        "name": "Sound Bomb",
-        "attributes": "concussion"
-    },
-]
+let { monsters, weapons, ammo, items } = require("../data.json")
 
 let selectedQuest = {}
 
 module.exports = {
     
+    getWeapons: (req, res) => {
+        let weaponList = weapons
+        res.status(200).send(weaponList)
+    },
+    getAmmo: (req, res) => {
+        let ammoList = ammo
+        res.status(200).send(ammoList)
+    },
     getItems: (req, res) => {
         let itemsList = items
         res.status(200).send(itemsList)
@@ -87,11 +26,13 @@ module.exports = {
             let newQuest = {
              "monster": "",
              "weak": [],
+             "build": "",
              "image": "",
              "reward": 0  
             }
             newQuest.monster = randomMonster.name
             newQuest.weak = randomMonster.weaknesses
+            newQuest.build = randomMonster.build
             newQuest.image = randomMonster.image
             newQuest.reward = Math.floor(Math.random() * (800 - 500)) + 500
             
@@ -111,17 +52,30 @@ module.exports = {
     },
     calculateHunt: (req, res) => {
         let weak = req.body.monsterWeak
-        let attribute = req.body.gearAttribute
-        // console.log(type)
-        // console.log(attribute)
+        let build = req.body.monsterBuild
+        let weapon = req.body.weaponAttribute
+        let ammo = req.body.ammoAttribute
+        let gear = req.body.gearAttribute
+        console.log(selectedQuest);
+        if(selectedQuest === {}){
+            res.status(200).send("No Quest Selected!")
+        }
+        
         let bonus = 0
+        let num = Math.random()
+
+        if(build === weapon){
+            bonus += 0.1
+        }
         for(i=0; i<weak.length; i++){
-            if(weak[i] === attribute){
-                bonus + 0.2
+            if(weak[i] === ammo && weak[i] === gear){
+                bonus += 0.2
+            }else if(weak[i] === ammo || weak[i] === gear){
+                bonus += 0.1
             }
         }
-        let num = Math.random() + bonus
-        if(num < .4){
+        let num2 = num + bonus
+        if(num2 < .4){
             res.status(200).send("Quest failed...")
         }else{
             res.status(200).send("Quest successful!")

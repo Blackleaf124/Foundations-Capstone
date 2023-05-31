@@ -29,35 +29,49 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
     infoButton.id = ("monsterInfoButton")
     infoButton.addEventListener("click", () => {
         const infoDiv = document.createElement("div")
+        const closeBtn = document.createElement("h1")
         const infoImg = document.createElement("img")
+        const textDiv = document.createElement("div")
         const infoTitle = document.createElement("h2")
         const infoP = document.createElement("p")
-        const closeBtn = document.createElement("button")
+        const lowOpacityBkgrd = document.createElement("div")
 
         infoDiv.id = "infoPanel"
         infoDiv.classList.add("info-panel")
+        textDiv.id = "textDiv"
         infoTitle.innerHTML = monsterName
         infoP.innerHTML = "Placeholder text"
+        infoP.id = "infoP"
         infoImg.src = imgURL
-        infoImg.classList.add("monster-image")
-        closeBtn.innerText = "Close"
+        infoImg.classList.add("monster-imageInfo")
+        closeBtn.innerHTML = "X"
         closeBtn.id = "closeButton"
         closeBtn.addEventListener("click", () => {
             infoDiv.remove()
+            lowOpacityBkgrd.remove()
         })
+        lowOpacityBkgrd.id = "lowOpacityBkgrd"
 
-        infoDiv.appendChild(infoTitle)
-        infoDiv.appendChild(infoImg)
         infoDiv.appendChild(closeBtn)
-        infoDiv.appendChild(infoP)
+        infoDiv.appendChild(infoImg)
+        textDiv.appendChild(infoTitle)
+        textDiv.appendChild(infoP)
+        infoDiv.appendChild(textDiv)
 
         infoBoard.appendChild(infoDiv)
+
+        let main = document.getElementById("main")
+        main.appendChild(lowOpacityBkgrd)
     })
     cardButton.innerText = "Select"
     cardButton.classList.add("cardButton")
     cardButton.id = (id + "selectBtn")
     currentBtnId = cardButton.id
     cardButton.addEventListener("click", () => {
+        if(document.getElementById("stamp")){
+            return
+        }
+        
         if(id === "firstQuest"){
             selectedQuest = currentQuests[0]
         }else if(id === "secondQuest"){
@@ -83,8 +97,6 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
         stamp.style.bottom = Math.floor(Math.random() * (300 - 80) + 80) + "px"
         stamp.style.rotate = Math.floor(Math.random() * (30 + 30) - 30) + "deg"
         cardWrapper.appendChild(stamp)
-
-        console.log(selectedQuest);
         postSelectedQuest()
     })
     cardWrapper.appendChild(cardTitle)
@@ -94,6 +106,36 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
     cardWrapper.appendChild(infoButton)
 
     qstBoard.appendChild(cardWrapper)
+}
+
+const getWeaponsArray = () => {
+    console.log("Get weapons")
+
+    axios.get("http://localhost:4060/weapons/")
+        .then(res => {
+            weaponsList = res.data
+            let optionList = document.getElementById("weapon").options
+            let options = weaponsList
+
+            options.forEach(option => optionList.add(
+                new Option(option.name, option.attributes)
+            ))
+        })
+}
+
+const getAmmoArray = () => {
+    console.log("Get ammo")
+
+    axios.get("http://localhost:4060/ammo/")
+        .then(res => {
+            ammoList = res.data
+            let optionList = document.getElementById("ammo").options
+            let options = ammoList
+
+            options.forEach(option => optionList.add(
+                new Option(option.name, option.attributes)
+            ))
+        })
 }
 
 const getItemsArray = () => {
@@ -113,7 +155,7 @@ const getItemsArray = () => {
 
 const getNewQuests = () => {
     console.log("Get new quests")
-
+    deleteSelectedQuest()
     document.querySelector("#firstQuest")?.remove()
     document.querySelector("#secondQuest")?.remove()
     document.querySelector("#thirdQuest")?.remove()
@@ -127,6 +169,12 @@ const getNewQuests = () => {
         })
 }
 
+const refreshQuests = () => {
+    console.log("Get new quests")
+    deleteSelectedQuest()
+
+}
+
 const postSelectedQuest = () => {
     console.log("Post new quest")
 
@@ -134,7 +182,7 @@ const postSelectedQuest = () => {
 
     axios.post("http://localhost:4060/selected/", myBody)
         .then(res => {
-            
+            console.log(selectedQuest);
         })
         .catch()
 }
@@ -142,19 +190,34 @@ const postSelectedQuest = () => {
 const deleteSelectedQuest = () => {
     console.log("Delete selected quest");
     axios.delete("http://localhost:4060/clearSelected/")
-        .then(console.log("Selected quest cleared"))
+        .then(res => {
+            selectedQuest = {}
+            console.log("Selected quest cleared")
+        })
         .catch()
 }
 
 const beginHunt = (event) => {
     event.preventDefault()
-    let selectedOption = document.getElementById("gear")
-    let gearAttribute = selectedOption.options[selectedOption.selectedIndex].value
+    // if(selectedQuest === {}){
+
+    // }
+    let selectedWeapon = document.getElementById("weapon")
+    let weaponAttribute = selectedWeapon.options[selectedWeapon.selectedIndex].value
+    let selectedAmmo = document.getElementById("ammo")
+    let ammoAttribute = selectedAmmo.options[selectedAmmo.selectedIndex].value
+    let selectedGear = document.getElementById("gear")
+    let gearAttribute = selectedGear.options[selectedGear.selectedIndex].value
     let monsterWeaknesses = selectedQuest.weak
+    let monsterBuild = selectedQuest.build
     
+    console.log(selectedQuest);
 
     huntParams = {
         "monsterWeak": monsterWeaknesses,
+        "monsterBuild": monsterBuild,
+        "weaponAttribute": weaponAttribute,
+        "ammoAttribute": ammoAttribute,
         "gearAttribute": gearAttribute
     }
     
@@ -170,10 +233,19 @@ const beginHunt = (event) => {
             resultSection.appendChild(result)
             console.log(res.data)
         })
+        .catch(error => {
+            document.querySelector("#resultP")?.remove()
+            let result = document.createElement("p")
+            result.innerHTML = "You must select a quest in order to embark"
+            result.id = "resultP"
+            resultSection.appendChild(result)
+        })
 }
 
 
 getNewQuests()
+getWeaponsArray()
+getAmmoArray()
 getItemsArray()
 
 newQuestsBtn.addEventListener("click", getNewQuests)

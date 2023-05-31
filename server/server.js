@@ -6,8 +6,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const { getItems, getQuest, postSelected, deleteSelected, calculateHunt } = require('./controller.js')
+const { getWeapons, getAmmo, getItems, getQuest, postSelected, deleteSelected, calculateHunt } = require('./controller.js')
 
+app.get("/weapons", getWeapons)
+app.get("/ammo", getAmmo)
 app.get("/items", getItems)
 app.get("/quest", getQuest)
 app.post("/selected", postSelected)

@@ -6,9 +6,30 @@ body{
     background-size: cover;
 }
 
+#main{
+    background-image: url("monsterImages/woodBoards.jpg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+    font-family: gabriola;
+    font-size: large;
+    min-height: 100vh;
+}
+
 #questBoard{
     height: 480px;
 }
+
+@keyframes shrink {
+    0% {width: 280px;}
+    75% {width: 140px;}
+    100% {width: 150px}
+  }
 
 #stamp{
     position: absolute;
@@ -16,6 +37,8 @@ body{
     bottom: 300px;
     width: 150px;
     rotate: 30deg;
+    animation-name: shrink;
+    animation-duration: .3s;
 }
 
 .button{
@@ -29,9 +52,6 @@ body{
     text-align: center;  
 }
 
-#hunterGearForm{
-    height: 70px;
-}
 
 #resultP{
     background: #d9dad8;
@@ -71,21 +91,6 @@ body{
 
 .rmvButton:active{
     background-color: #657;
-}
-
-#main{
-    background-image: url("monsterImages/woodBoards.jpg");
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: 60%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    text-align: center;
-    font-family: gabriola;
-    font-size: large;
-    min-height: 100vh;
 }
 
 #boardHeader{
@@ -154,15 +159,31 @@ body{
     border: thick double #733;
 }
 
-.info-panel{
-    width: 600px;
-    background: #d9dad8;
+select{
+    border: solid 2px;
+    border-color: #422;
     border-radius: 6px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 100;
+    height: 27px;
+    background-color: rgb(228, 222, 188);
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#bottomOfPage{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#hunterGearForm{
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0px;
+    gap: 10px;
+    margin-right: 60px;
 }
 
 #hunterGear{
@@ -171,9 +192,14 @@ body{
     background-color: #422;
     color: rgb(228, 222, 188);
     text-align: center;
-    width: 50%;
+    width: 130px;
     height: 32px;
     border-radius: 5px;
+}
+
+#resultSection{
+    margin-left: 60px;
+    width: 200px;
 }
 
 #results{
@@ -183,6 +209,62 @@ body{
     color: rgb(228, 222, 188);
     text-align: center;
     height: 30px;
+    width: 130px;
     border-radius: 5px;
 }
 
+.info-panel{
+    width: 590px;
+    height: 400px;
+    background-image: url("monsterImages/tatteredCardHorizontal.png");
+    background-position: right 80% bottom 55%;
+    background-repeat: no-repeat;
+    background-size: 130%;
+    border-radius: 6px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    display: flex;
+}
+
+#textDiv{
+    margin: 20px;
+    text-align: left;
+    text-indent: 15px;
+}
+
+#infoP{
+    border: thick double #733;
+    background-color: rgba(133, 132, 132, 0.329);
+    height: 230px;
+    width: 290px;
+}
+
+#closeButton{
+    position: absolute;
+    left: 550px;
+    top: 15px;
+    margin: 0px;
+    cursor: pointer;
+    color: #733;
+}
+
+.monster-imageInfo{
+    width: 200px;
+    height: 300px;
+    border: thick double #733;
+    margin: 20px;
+    margin-top: 40px;
+}
+
+#lowOpacityBkgrd{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 90;
+}

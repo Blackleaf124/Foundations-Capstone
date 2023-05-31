@@ -1,0 +1,124 @@
+{    
+    "monsters": [
+        {
+            "name": "Beak Face",
+            "image": "/monsterImages/beakBoy.jpg",
+            "weaknesses": ["burning", "stun"],
+            "family": "carnal",
+            "build": "light"
+        },
+        {
+            "name": "Hammer-head",
+            "image": "/monsterImages/hammerHead.jpg",
+            "weaknesses": ["concussion", "holy"],
+            "family": "eldritch",
+            "build": "heavy"
+        },
+        {
+            "name": "Book-head Face Hider",
+            "image": "/monsterImages/bookHead.jpg",
+            "weaknesses": ["mental", "poison"],
+            "family": "abyssal",
+            "build": "normal"
+        },
+        {
+            "name": "Snake Zerg",
+            "image": "/monsterImages/snakeBoy.jpg",
+            "weaknesses": ["burning", "stun"],
+            "family": "carnal",
+            "build": "heavy"
+        },
+        {
+            "name": "Bug Demon",
+            "image": "/monsterImages/shyishBug.jpg",
+            "weaknesses": ["holy", "concussion"],
+            "family": "eldritch",
+            "build": "heavy"
+        },
+        {
+            "name": "Cosmic Monk",
+            "image": "/monsterImages/krissKrossKillYourFamily.jpg",
+            "weaknesses": ["poison", "mental"],
+            "family": "abyssal",
+            "build": "light"
+        }
+    ],
+    "weapons": [
+        {
+            "name": "- - - - - - - Weapon - - - - - - ",
+            "attributes": "none"
+        },
+        {
+            "name": "Revolvers",
+            "attributes": "light"
+        },
+        {
+            "name": "Lever-action",
+            "attributes": "normal"
+        },
+        {
+            "name": "Double-Barrel",
+            "attributes": "heavy"
+        }
+    ],
+    "ammo": [
+        {
+            "name": "- - - - - Ammunition - - - - -",
+            "attributes": "none"
+        },
+        {
+            "name": "Silver-Bullets",
+            "attributes": "holy"
+        },
+        {
+            "name": "Toxic Rounds",
+            "attributes": "poison"
+        },
+        {
+            "name": "Explosive Rounds",
+            "attributes": "burning"
+        },
+        {
+            "name": "Zeus' Tears",
+            "attributes": "stun"
+        },
+        {
+            "name": "Hollow Point",
+            "attributes": "concussion"
+        },
+        {
+            "name": "Narcotic Rounds",
+            "attributes": "mental"
+        }
+    ],
+    "items": [
+        {
+            "name": "- - - - - - - - Gear - - - - - - - -",
+            "attributes": "none"
+        },
+        {
+            "name": "Mental Resolve Serum",
+            "attributes": "mental"
+        },
+        {
+            "name": "Poison Gas Grenades",
+            "attributes": "poison"
+        },
+        {
+            "name": "Flash Bombs",
+            "attributes": "stun"
+        },
+        {
+            "name": "Bola",
+            "attributes": "stun"
+        },
+        {
+            "name": "Golden Crucifix",
+            "attributes": "holy"
+        },
+        {
+            "name": "Sound Bomb",
+            "attributes": "concussion"
+        }
+    ]
+}
