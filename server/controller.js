@@ -28,12 +28,14 @@ module.exports = {
              "weak": [],
              "build": "",
              "image": "",
+             "description": "",
              "reward": 0  
             }
             newQuest.monster = randomMonster.name
             newQuest.weak = randomMonster.weaknesses
             newQuest.build = randomMonster.build
             newQuest.image = randomMonster.image
+            newQuest.description = randomMonster.description
             newQuest.reward = Math.floor(Math.random() * (800 - 500)) + 500
             
             newQuests.push(newQuest)

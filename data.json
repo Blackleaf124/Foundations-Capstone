@@ -5,42 +5,48 @@
             "image": "/monsterImages/beakBoy.jpg",
             "weaknesses": ["burning", "stun"],
             "family": "carnal",
-            "build": "light"
+            "build": "light",
+            "description": "Bird man description"
         },
         {
             "name": "Hammer-head",
             "image": "/monsterImages/hammerHead.jpg",
             "weaknesses": ["concussion", "holy"],
             "family": "eldritch",
-            "build": "heavy"
+            "build": "heavy",
+            "description": ""
         },
         {
             "name": "Book-head Face Hider",
             "image": "/monsterImages/bookHead.jpg",
             "weaknesses": ["mental", "poison"],
             "family": "abyssal",
-            "build": "normal"
+            "build": "normal",
+            "description": ""
         },
         {
             "name": "Snake Zerg",
             "image": "/monsterImages/snakeBoy.jpg",
             "weaknesses": ["burning", "stun"],
             "family": "carnal",
-            "build": "heavy"
+            "build": "heavy",
+            "description": ""
         },
         {
             "name": "Bug Demon",
             "image": "/monsterImages/shyishBug.jpg",
             "weaknesses": ["holy", "concussion"],
             "family": "eldritch",
-            "build": "heavy"
+            "build": "heavy",
+            "description": ""
         },
         {
             "name": "Cosmic Monk",
             "image": "/monsterImages/krissKrossKillYourFamily.jpg",
             "weaknesses": ["poison", "mental"],
             "family": "abyssal",
-            "build": "light"
+            "build": "light",
+            "description": ""
         }
     ],
     "weapons": [

@@ -7,7 +7,7 @@ let currentQuests = []
 let selectedQuest = {}
 let itemsList = []
 
-function createNewQuestCard (monsterName, imgURL, bounty, id) {
+function createNewQuestCard (monsterName, imgURL, bounty, description, id) {
     
     const cardWrapper = document.createElement("div")
     const cardTitle = document.createElement("h3")
@@ -40,7 +40,7 @@ function createNewQuestCard (monsterName, imgURL, bounty, id) {
         infoDiv.classList.add("info-panel")
         textDiv.id = "textDiv"
         infoTitle.innerHTML = monsterName
-        infoP.innerHTML = "Placeholder text"
+        infoP.innerHTML = description
         infoP.id = "infoP"
         infoImg.src = imgURL
         infoImg.classList.add("monster-imageInfo")
@@ -163,9 +163,9 @@ const getNewQuests = () => {
     axios.get("http://localhost:4060/quest/")
         .then(res => {
             currentQuests = res.data
-            createNewQuestCard(res.data[0].monster, res.data[0].image, res.data[0].reward, "firstQuest")
-            createNewQuestCard(res.data[1].monster, res.data[1].image, res.data[1].reward, "secondQuest")
-            createNewQuestCard(res.data[2].monster, res.data[2].image, res.data[2].reward, "thirdQuest")
+            createNewQuestCard(res.data[0].monster, res.data[0].image, res.data[0].reward, res.data[0].description, "firstQuest")
+            createNewQuestCard(res.data[1].monster, res.data[1].image, res.data[1].reward, res.data[1].description, "secondQuest")
+            createNewQuestCard(res.data[2].monster, res.data[2].image, res.data[2].reward, res.data[2].description, "thirdQuest")
         })
 }
 
