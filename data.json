@@ -81,7 +81,7 @@
             "attributes": "poison"
         },
         {
-            "name": "Explosive Rounds",
+            "name": "Napalm Rounds",
             "attributes": "burning"
         },
         {
@@ -89,7 +89,7 @@
             "attributes": "stun"
         },
         {
-            "name": "Hollow Point",
+            "name": "Explosive Rounds",
             "attributes": "concussion"
         },
         {

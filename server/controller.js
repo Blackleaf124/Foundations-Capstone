@@ -99,7 +99,7 @@ module.exports = {
         if(num2 < 40){
           if(bonus >= 30){
                 fateOfHunter = "Despite their powerful loadout and optimized gear, the beast somehow found an opening and managed to slay the hunter."
-            }else if(21 > bonus > 9){
+            }else if(bonus === 10 || bonus === 20){
                 fateOfHunter = "The battle was close, but the hunter's equipment wasn't right for the hunt and they eventually were overpowered and killed."
             }else if(bonus === 0){
                 fateOfHunter = "The hunter's equipment wasn't anywhere close to what they needed to complete the hunt and they were swiftly and surgically taken down."
@@ -108,7 +108,7 @@ module.exports = {
         }else{
             if(bonus === 30){
                 fateOfHunter = "The fight was over in a matter of seconds as the hunter deployed a near flawless strategy to put their target down and complete the contract."
-            }else if(21 > bonus > 9){
+            }else if(bonus === 10 || bonus === 20){
                 fateOfHunter = "The hunter's kit wasn't perfect, but they had enough tricks up their sleeve to finish off the beast."
             }else if(bonus === 0){
                 fateOfHunter = "With virtually nothing in their loadout that was particularly effective against their prey, it's a miracle they managed to get the kill."

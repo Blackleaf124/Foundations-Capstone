@@ -3,6 +3,9 @@ const qstBoard = document.getElementById("questBoard")
 const infoBoard = document.getElementById("info")
 const chsnQuest = document.getElementById("chosenQuest")
 const newQuestsBtn = document.getElementById("newQstBtn")
+const equipmentInfoBtn = document.getElementById("equipmentInfoBtn")
+const closeEquipInfo = document.getElementById("closeEquip")
+
 let currentQuests = []
 let selectedQuest = {}
 let itemsList = []
@@ -106,6 +109,11 @@ function createNewQuestCard (monsterName, imgURL, bounty, description, id) {
     cardWrapper.appendChild(infoButton)
 
     qstBoard.appendChild(cardWrapper)
+}
+
+function showEquipInfo (){
+    let equipmentWiki = document.getElementById("equipmentWiki")
+    equipmentWiki.id = "equipmentWiki-Open"
 }
 
 const getWeaponsArray = () => {
@@ -249,7 +257,12 @@ getAmmoArray()
 getItemsArray()
 
 newQuestsBtn.addEventListener("click", getNewQuests)
+equipmentInfoBtn.addEventListener("click", showEquipInfo)
 hunterGearForm.addEventListener("submit", beginHunt)
+closeEquipInfo.addEventListener("click", () => {
+    let equipmentWikiOpen = document.getElementById("equipmentWiki-Open")
+    equipmentWikiOpen.id = "equipmentWiki"
+})
 
 
 

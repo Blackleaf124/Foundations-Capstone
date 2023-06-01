@@ -52,6 +52,10 @@ body{
     text-align: center;  
 }
 
+.button:active{
+    background-color: #955;
+}
+
 
 #resultP{
     background: #d9dad8;
@@ -267,4 +271,93 @@ select{
     top: 0;
     background-color: rgba(0,0,0,0.6);
     z-index: 90;
+}
+
+#equipmentWiki{
+    position: absolute;
+    height: 700px;
+    width: 800px;
+    background-image: url("monsterImages/tatteredCard.png");
+    background-position: absolute;
+    background-repeat: no-repeat;
+    top: 200px;
+    background-position: right 42% top 20%;
+    background-size: 1600px 900px;
+    visibility: hidden;
+}
+
+#equipmentWiki-Open{
+    position: absolute;
+    height: 700px;
+    width: 800px;
+    background-image: url("monsterImages/tatteredCard.png");
+    background-position: absolute;
+    background-repeat: no-repeat;
+    top: 200px;
+    background-position: right 42% top 20%;
+    background-size: 1600px 900px;
+}
+
+#closeEquip{
+    position: absolute;
+    left: 680px;
+    top: 4px;
+    margin: 0px;
+    cursor: pointer;
+    color: #733;
+}
+
+#container{
+    position: absolute;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
+    padding-top: 0px;
+    padding-left: 100px;
+    margin-left: 0px;
+    height: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    overflow-y: auto;
+}
+
+#container::-webkit-scrollbar { 
+    display: none;
+}
+
+.equipment{
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 10px;
+    border: dotted 2px black;
+}
+
+.equipmentSections{
+    border: thick double #422;
+    text-align: left;
+}
+
+.equipTitle{
+    margin: 0px;
+    padding-left: 10px;
+}
+
+.equipBody{
+    margin: 0px;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+.blueButton{
+    border: none;
+    background-color: #435;
+    color: rgb(228, 222, 188);
+    padding: 6px 10px;
+    width: 70px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center; 
 }
