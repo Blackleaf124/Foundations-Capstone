@@ -1,52 +1,52 @@
 {    
     "monsters": [
         {
-            "name": "Beak Face",
+            "name": "Evening Raven",
             "image": "/monsterImages/beakBoy.jpg",
             "weaknesses": ["burning", "stun"],
             "family": "carnal",
             "build": "light",
-            "description": "Bird man description"
+            "description": "Common, man-eating humanoid avians that prowl low population settlements at night. They're quick and nimble, but sensitive to light. Their beaks are razor sharp and can easily kill a hunter in one well placed strike. Despite their offensive power they have dry, thin skin that leaves them vulnerable to fire and electricity."
         },
         {
-            "name": "Hammer-head",
+            "name": "Overworld Raider",
             "image": "/monsterImages/hammerHead.jpg",
-            "weaknesses": ["concussion", "holy"],
+            "weaknesses": ["stun", "holy"],
             "family": "eldritch",
-            "build": "heavy",
-            "description": ""
+            "build": "normal",
+            "description": "Eldritch demon's from the underworld that have breached the surface in an attempt to feed on mankind. They are well rounded fighters and have a dangerous mix of speed and armour. Given their demonic nature, they're weak to the effects of holy weapons. In addition to this they are easily stunned by flash bombs and electricity."
         },
         {
-            "name": "Book-head Face Hider",
+            "name": "Muttering Star Mutant",
             "image": "/monsterImages/bookHead.jpg",
-            "weaknesses": ["mental", "poison"],
+            "weaknesses": ["mental", "concussion"],
             "family": "abyssal",
             "build": "normal",
-            "description": ""
+            "description": "These creatures are an enigma to mankind. Their origin is tied to the cosmos, but no scientists undertand much beyond that. They are hostile to humans though and use psycic powers to turn humans with weak wills into their slaves. They're physically weak though and can be easily shaken by loud sounds or blunt force."
         },
         {
-            "name": "Snake Zerg",
+            "name": "Armoured Basilisk",
             "image": "/monsterImages/snakeBoy.jpg",
-            "weaknesses": ["burning", "stun"],
+            "weaknesses": ["concussion", "poison"],
             "family": "carnal",
             "build": "heavy",
-            "description": ""
+            "description": "Terrifying apex predators that hunt humans as a primary food source. They are durable brawlers that rely on their thick scales to charge through enemy attacks. They aren't suseptible to most physical attacks, but their immune systems are weak and their ears are sensitive."
         },
         {
-            "name": "Bug Demon",
+            "name": "Burrowing Horror",
             "image": "/monsterImages/shyishBug.jpg",
-            "weaknesses": ["holy", "concussion"],
+            "weaknesses": ["burning", "poison"],
             "family": "eldritch",
             "build": "heavy",
-            "description": ""
+            "description": "These bug like monsters thrive in wet territories. They are slow and a bit clumsy, but can practically disapear underground at any time. They excel at suprise attacks and need to be hunted with caution. They need a wet environment to stay cool because extreme heat makes their exoskeleton extremely brittle."
         },
         {
-            "name": "Cosmic Monk",
+            "name": "Blood-moon Rift Monk",
             "image": "/monsterImages/krissKrossKillYourFamily.jpg",
-            "weaknesses": ["poison", "mental"],
+            "weaknesses": ["holy", "mental"],
             "family": "abyssal",
             "build": "light",
-            "description": ""
+            "description": "Entire villages have been torn to pieces by these monsters. They are highly intelligent beings with telepathic power. They have some sort of pagan religion revolving around the moon. They're often found in groups practicing human sacrifice and other unholy acts."
         }
     ],
     "weapons": [
@@ -93,7 +93,7 @@
             "attributes": "concussion"
         },
         {
-            "name": "Narcotic Rounds",
+            "name": "Azure Comets",
             "attributes": "mental"
         }
     ],
@@ -115,8 +115,8 @@
             "attributes": "stun"
         },
         {
-            "name": "Bola",
-            "attributes": "stun"
+            "name": "Molotov Cocktails",
+            "attributes": "burning"
         },
         {
             "name": "Golden Crucifix",
