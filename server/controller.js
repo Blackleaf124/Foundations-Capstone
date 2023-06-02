@@ -2,6 +2,8 @@ let { monsters, weapons, ammo, items } = require("../data.json")
 
 let selectedQuest = {}
 
+let cashMoney = "1000"
+
 module.exports = {
     
     getWeapons: (req, res) => {
@@ -51,6 +53,9 @@ module.exports = {
     deleteSelected: (req, res) => {
         selectedQuest = {}
         res.status(200).send("Selected Quest Cleared!")
+    },
+    getMoney: (req, res) => {
+        res.status(200).send(cashMoney)
     },
     calculateHunt: (req, res) => {
         let weak = req.body.monsterWeak

@@ -362,3 +362,9 @@ select{
     cursor: pointer;
     text-align: center; 
 }
+
+#moneyDisplay{
+    color: rgb(228, 222, 188);
+    position: absolute;
+    left: 460px;
+}

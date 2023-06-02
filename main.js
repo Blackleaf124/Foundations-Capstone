@@ -210,6 +210,18 @@ const deleteSelectedQuest = () => {
         .catch()
 }
 
+const getCurrentMoney = () => {
+    console.log("Get money")
+    axios.get("http://localhost:4060/currentMoney/")
+        .then(res => {
+            let money = res.data
+            console.log(money);
+            let moneyDisplay = document.getElementById("moneyDisplay")
+            moneyDisplay.innerHTML = "$ " + money
+        })
+        .catch()
+}
+
 const beginHunt = (event) => {
     event.preventDefault()
     // if(selectedQuest === {}){
@@ -255,7 +267,7 @@ const beginHunt = (event) => {
         })
 }
 
-
+getCurrentMoney()
 getNewQuests()
 getWeaponsArray()
 getAmmoArray()
