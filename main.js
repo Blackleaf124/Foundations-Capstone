@@ -114,6 +114,11 @@ function createNewQuestCard (monsterName, imgURL, bounty, description, id) {
 function showEquipInfo (){
     let equipmentWiki = document.getElementById("equipmentWiki")
     equipmentWiki.id = "equipmentWiki-Open"
+
+    const lowOpacityBkgrd = document.createElement("div")
+    lowOpacityBkgrd.id = "lowOpacityBkgrd"
+    let main = document.getElementById("main")
+    main.appendChild(lowOpacityBkgrd)
 }
 
 const getWeaponsArray = () => {
@@ -262,6 +267,7 @@ hunterGearForm.addEventListener("submit", beginHunt)
 closeEquipInfo.addEventListener("click", () => {
     let equipmentWikiOpen = document.getElementById("equipmentWiki-Open")
     equipmentWikiOpen.id = "equipmentWiki"
+    lowOpacityBkgrd.remove()
 })
 
 
